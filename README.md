@@ -9,7 +9,7 @@
 ━━━━━┏━┛┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ━━━━━┗━━┛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Script en Python para saber el Sistema Operativo de acuerdo al valor <abbr title="Time To Live">TTL</abbr> de una dirección IP
+Script en Python para saber el Sistema Operativo de acuerdo al valor <abbr title="Time To Live">TTL</abbr> de un equipo pasandole como argumento su dirección IP.
 
 El comando ping se puede utilizar para identificar el sistema operativo a través de valores TTL. Los valores TTL predeterminados varían entre los diferentes sistemas operativos, el script identifica los 3 sistemas operativos más populares:
 
@@ -21,6 +21,6 @@ El comando ping se puede utilizar para identificar el sistema operativo a travé
 
 #### ¿Cómo funciona?
 
-Al script hay que pasarle como argumento la dirección IP del equipo que requerimos saber con que sistema operativo cuenta:
+Al script hay que pasarle como argumento la dirección IP del equipo para identificar su sistema operativo:
 
-`SystemTTL.py <ip>`
+`SystemTTL.py <IP>`
