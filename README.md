@@ -21,7 +21,7 @@ El comando ping se puede utilizar para identificar el sistema operativo a travé
 | Windows  | 128 |
 | Solaris/AIX  | 254 |
 
-#### ¿Cómo funciona?
+### ¿Cómo funciona?
 
 Al script hay que pasarle como argumento la dirección IP del equipo para identificar su sistema operativo:
 
