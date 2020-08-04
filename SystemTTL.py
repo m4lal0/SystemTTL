@@ -2,17 +2,18 @@
 
 #by @M4lal0
 
-import subprocess, re, sys
+import subprocess,re,sys
 
 
 class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    BOLD = '\033[1m'
+    PURPLE = '\033[95m'
+    BLUE = '\033[94m'
+    YELLOW = '\033[93m'
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    DARKCYAN = '\033[36m'
     UNDERLINE = '\033[4m'
+    BOLD = '\033[1m'
     ENDC = '\033[0m'
 
 
@@ -31,22 +32,24 @@ def return_ttl_os_name(ttl_numer):
     ttl = ttl_numer
     if ttl:
         if ttl >= 0 and ttl <=64:
-            return (bcolors.OKGREEN + 'linux-ttl=%s' % ttl + bcolors.ENDC)
+            return (bcolors.GREEN + 'linux-ttl=%s' % ttl + bcolors.ENDC)
         elif ttl >= 65 and ttl <=128:
-            return (bcolors.OKGREEN + 'Windows-ttl=%s' % ttl + bcolors.ENDC)
+            return (bcolors.GREEN + 'Windows-ttl=%s' % ttl + bcolors.ENDC)
         elif ttl >= 128 and ttl <=254:
-            return (bcolors.OKGREEN + 'Solaris/AIX-ttl=%s' % ttl + bcolors.ENDC)
+            return (bcolors.GREEN + 'Solaris/AIX-ttl=%s' % ttl + bcolors.ENDC)
         else:
-            return (bcolors.FAIL + 'unknown=%s' % ttl + bcolors.ENDC)
+            return (bcolors.RED + 'unknown=%s' % ttl + bcolors.ENDC)
     else:
         pass
 
 
 if len(sys.argv) !=2:
-    print(bcolors.WARNING + "\n[!]" + bcolors.ENDC + " Uso: " + bcolors.BOLD + sys.argv[0] + " <ip-address>\n" + bcolors.ENDC)
+    print(bcolors.YELLOW + "\n[!]" + bcolors.ENDC + " Uso: " + bcolors.BOLD + sys.argv[0] + " <ip-address>\n" + bcolors.ENDC)
     sys.exit(1)
 
 addr = sys.argv[1]
 ttl = return_ttl_number(addr)
 
-print('\n%s -> %s' % (addr,return_ttl_os_name(ttl)))
+print("-"*40)
+print('%s -> %s' % (addr,return_ttl_os_name(ttl)))
+print("-"*40)
