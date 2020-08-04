@@ -1,5 +1,6 @@
 # SystemTTL
 
+<p align="center">
 ┏━━━┓━━━━━━━━━━┏┓━━━━━━━━━┏━━━━┓┏━━━━┓┏┓━━━
 ┃┏━┓┃━━━━━━━━━┏┛┗┓━━━━━━━━┃┏┓┏┓┃┃┏┓┏┓┃┃┃━━━
 ┃┗━━┓┏┓━┏┓┏━━┓┗┓┏┛┏━━┓┏┓┏┓┗┛┃┃┗┛┗┛┃┃┗┛┃┃━━━
@@ -8,6 +9,7 @@
 ┗━━━┛┗━┓┏┛┗━━┛━┗━┛┗━━┛┗┻┻┛━┗━━┛━━┗━━┛━┗━━━┛
 ━━━━━┏━┛┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ━━━━━┗━━┛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</p>
 
 Script en Python para saber el Sistema Operativo de acuerdo al valor <abbr title="Time To Live">TTL</abbr> de un equipo pasandole como argumento su dirección IP.
 
@@ -23,4 +25,10 @@ El comando ping se puede utilizar para identificar el sistema operativo a travé
 
 Al script hay que pasarle como argumento la dirección IP del equipo para identificar su sistema operativo:
 
-`SystemTTL.py <IP>`
+```shell
+$ python3 SystemTTL.py <IP>
+```
+
+* `IP` -- IP del equipo a escanear
+
+------------
