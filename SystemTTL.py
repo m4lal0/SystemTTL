@@ -17,39 +17,26 @@ class bcolors:
     ENDC = '\033[0m'
 
 
-def return_ttl_number(address):
-    try:
-        proc = subprocess.Popen(["ping %s -c 1" % address, ""], stdout=subprocess.PIPE, shell=True)
-        (out, err) = proc.communicate()
-        out = out.decode("utf-8").split()
-        out[13] = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", out[12])
-        return float(out[13][0])
-    except Exception:
-        pass
+def get_value_ttl(address):
+    proc = subprocess.Popen(["ping -c 1 %s" % address, ""], stdout=subprocess.PIPE, shell=True)
+    (out, err) = proc.communicate()
+    out = out.split()
+    out = out[12].decode('utf-8')
+
+    ttl = re.findall(r"\d{1,3}", out)[0]
+
+    return ttl
 
 
-def return_ttl_os_name(ttl_numer):
-    ttl = ttl_numer
-    if ttl:
-        if ttl >= 0 and ttl <=64:
-            return (bcolors.GREEN + 'linux-ttl=%s' % ttl + bcolors.ENDC)
-        elif ttl >= 65 and ttl <=128:
-            return (bcolors.GREEN + 'Windows-ttl=%s' % ttl + bcolors.ENDC)
-        elif ttl >= 128 and ttl <=254:
-            return (bcolors.GREEN + 'Solaris/AIX-ttl=%s' % ttl + bcolors.ENDC)
-        else:
-            return (bcolors.RED + 'unknown=%s' % ttl + bcolors.ENDC)
+if __name__ == '__main__':
+    address = sys.argv[1]
+
+    ttl_value = get_value_ttl(address)
+    ttl_value = int(ttl_value)
+
+    if ttl_value >= 0 and ttl_value <= 64:
+        print(bcolors.GREEN + "\n%s -> Linux " % address + bcolors.ENDC)
+    elif ttl_value >= 65 and ttl_value <= 128:
+        print(bcolors.GREEN + "\n%s -> Windows " % address + bcolors.ENDC)
     else:
-        pass
-
-
-if len(sys.argv) !=2:
-    print(bcolors.YELLOW + "\n[!]" + bcolors.ENDC + " Uso: " + bcolors.BOLD + sys.argv[0] + " <ip-address>\n" + bcolors.ENDC)
-    sys.exit(1)
-
-addr = sys.argv[1]
-ttl = return_ttl_number(addr)
-
-print("-"*40)
-print('%s -> %s' % (addr,return_ttl_os_name(ttl)))
-print("-"*40)
+        print(bcolors.GREEN + "\n%s -> Solaris/AIX" %address + bcolors.ENDC)
