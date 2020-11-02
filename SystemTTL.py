@@ -17,8 +17,13 @@ class bcolors:
     ENDC = '\033[0m'
 
 
-def get_value_ttl(address):
-    proc = subprocess.Popen(["ping -c 1 %s" % address, ""], stdout=subprocess.PIPE, shell=True)
+def arguments():
+    print(bcolors.DARKCYAN + "\n[" + bcolors.YELLOW + "!" + bcolors.DARKCYAN + "]" + bcolors.YELLOW + " Use: python3 " + sys.argv[0] + " <IP-address>\n" + bcolors.ENDC)
+    sys.exit(1)
+
+
+def get_value_ttl(ip_address):
+    proc = subprocess.Popen(["ping -c 1 %s" % ip_address, ""], stdout=subprocess.PIPE, shell=True)
     (out, err) = proc.communicate()
     out = out.split()
     out = out[12].decode('utf-8')
@@ -29,14 +34,17 @@ def get_value_ttl(address):
 
 
 if __name__ == '__main__':
-    address = sys.argv[1]
+    try:
+        ip_address = sys.argv[1]
 
-    ttl_value = get_value_ttl(address)
-    ttl_value = int(ttl_value)
+        ttl_value = get_value_ttl(ip_address)
+        ttl_value = int(ttl_value)
 
-    if ttl_value >= 0 and ttl_value <= 64:
-        print(bcolors.GREEN + "\n%s -> Linux " % address + bcolors.ENDC)
-    elif ttl_value >= 65 and ttl_value <= 128:
-        print(bcolors.GREEN + "\n%s -> Windows " % address + bcolors.ENDC)
-    else:
-        print(bcolors.GREEN + "\n%s -> Solaris/AIX" %address + bcolors.ENDC)
+        if ttl_value >= 0 and ttl_value <= 64:
+            print(bcolors.BOLD + "\n%s -> " % ip_address + bcolors.GREEN + "Linux \n" + bcolors.ENDC)
+        elif ttl_value >= 65 and ttl_value <= 128:
+            print(bcolors.BOLD + "\n%s -> " % ip_address + bcolors.GREEN + "Windows \n" + bcolors.ENDC)
+        else:
+            print(bcolors.BOLD + "\n%s -> " % ip_address + bcolors.GREEN + "Solaris/AIX\n" + bcolors.ENDC)
+    except:
+        arguments()
