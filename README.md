@@ -1,5 +1,9 @@
 # SystemTTL
 
+[![GitHub top language](https://img.shields.io/github/languages/top/m4lal0/SystemTTL?logo=python&style=flat-square)](#)
+[![GitHub repo size](https://img.shields.io/github/repo-size/m4lal0/SystemTTL?logo=webpack&style=flat-square)](#)
+[![By](https://img.shields.io/badge/By-m4lal0-green?style=flat-square&logo=github)](#)
+
 <p align="center">
 ┏━━━┓━━━━━━━━━━┏┓━━━━━━━━━┏━━━━┓┏━━━━┓┏┓━━━
 ┃┏━┓┃━━━━━━━━━┏┛┗┓━━━━━━━━┃┏┓┏┓┃┃┏┓┏┓┃┃┃━━━
@@ -23,12 +27,12 @@ El comando ping se puede utilizar para identificar el sistema operativo a travé
 
 ### ¿Cómo funciona?
 
-Al script hay que pasarle como argumento la dirección IP del equipo para identificar su sistema operativo:
+Al script hay que pasarle como argumento la dirección IP del equipo para identificar el sistema operativo:
 
 ```shell
-$ python3 SystemTTL.py <IP>
+$ python3 systemTTL.py <IP>
 ```
 
-* `IP` -- IP del equipo a escanear
+* `IP` -- Dirección IP del equipo a escanear
 
 ------------
